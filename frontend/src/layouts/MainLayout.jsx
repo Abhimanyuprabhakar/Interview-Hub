@@ -1,10 +1,17 @@
 import { Outlet } from 'react-router-dom';
+import Navbar from '../components/Navbar.jsx';
+import useTheme from '../hooks/useTheme.js';
 
 function MainLayout() {
+  const { isDarkMode, toggleTheme } = useTheme();
+
   return (
-    <main className="min-h-screen bg-slate-50 text-slate-900">
-      <Outlet />
-    </main>
+    <div className="min-h-screen bg-[var(--color-bg)] text-[var(--color-text)]">
+      <Navbar isDarkMode={isDarkMode} onToggleTheme={toggleTheme} />
+      <main>
+        <Outlet />
+      </main>
+    </div>
   );
 }
 
